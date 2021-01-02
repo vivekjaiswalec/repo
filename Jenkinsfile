@@ -17,7 +17,6 @@ pipeline {
         
         stage('Cleanup Workspace') {
             steps {
-                cleanWs()
                 sh """
                 echo "Cleaned Up Workspace For Project"
                 """
@@ -28,7 +27,6 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM', 
-                    branches: [[name: '*/main']], 
                     userRemoteConfigs: [[url: 'https://github.com/vivekjaiswalec/repo.git']]
                 ])
             }
